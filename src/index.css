@@ -1,57 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* PRD Colors HSL Values */
+    --prd-background-val: 210 25% 97.1%; /* #F5F7FA */
+    --prd-surface-val: 0 0% 100%;       /* #FFFFFF */
+    --prd-sidebar-val: 227 35.8% 39.4%;  /* #405189 */
+    --prd-primary-text-val: 210 10.5% 14.5%; /* #212529 */
+    --prd-secondary-text-val: 213 10.4% 43.3%; /* #656D78 */
+    --prd-accent-pink-val: 340 82.2% 51.6%; /* #E91E63 */
+    --prd-accent-blue-val: 210 94.9% 53.5%; /* #1886F9 */
+    --prd-accent-green-val: 171 89.8% 37.3%; /* #0AB39C */
+    --prd-border-val: 210 10% 92.4%;    /* #E9EBEC */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Shadcn & App Variables (Light Theme) */
+    --background: var(--prd-background-val);
+    --foreground: var(--prd-primary-text-val);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: var(--prd-surface-val);
+    --card-foreground: var(--prd-primary-text-val);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: var(--prd-surface-val);
+    --popover-foreground: var(--prd-primary-text-val);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: var(--prd-accent-blue-val);
+    --primary-foreground: var(--prd-surface-val); 
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 210 16% 93%; /* #E8EAEF - Light gray for secondary button backgrounds */
+    --secondary-foreground: var(--prd-primary-text-val);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%; /* #F4F6F8 - Very light gray, existing muted */
+    --muted-foreground: var(--prd-secondary-text-val);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: var(--prd-accent-pink-val);
+    --accent-foreground: var(--prd-surface-val);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%; /* Existing */
+    --destructive-foreground: 210 40% 98%; /* Existing */
 
-    --radius: 0.5rem;
+    --border: var(--prd-border-val);
+    --input: var(--prd-border-val);
+    --ring: var(--prd-accent-blue-val); 
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.375rem; /* PRD: rounded-md (0.375rem = 6px) */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Custom App Variables */
+    --font-sans: "Nunito", sans-serif;
+    
+    --sidebar: var(--prd-sidebar-val);
+    --sidebar-foreground: var(--prd-surface-val);
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --accent-green: var(--prd-accent-green-val);
+    /* --accent-pink is aliased to --accent */
+    /* --accent-blue is aliased to --primary */
+    /* --secondary-text for direct use if needed, mapped to --muted-foreground */
+    --secondary-text-color: var(--prd-secondary-text-val);
   }
 
   .dark {
+    /* PRD does not specify dark theme. Preserving existing dark theme variables. */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -79,7 +90,15 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
+    
+    /* Dark theme specifics for custom variables, if any defined for light, these are illustrative */
+    /* --sidebar: ...; */
+    /* --sidebar-foreground: ...; */
+    /* --accent-green: ...; */
+    /* --secondary-text-color: ...; */
+    
+    /* Keeping existing sidebar specific dark vars as PRD does not cover them for light or dark */
+    --sidebar-background: 240 5.9% 10%; 
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
@@ -97,5 +116,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
