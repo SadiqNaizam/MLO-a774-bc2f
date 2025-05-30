@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -41,7 +42,7 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					DEFAULT: 'hsl(var(--accent))', /* Mapped to PRD accentPink */
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
@@ -53,21 +54,23 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					DEFAULT: 'hsl(var(--sidebar))', /* PRD sidebar color */
+					foreground: 'hsl(var(--sidebar-foreground))' /* PRD sidebar text color */
+				},
+        // PRD specific named colors
+        'accent-green': 'hsl(var(--accent-green))',
+        'secondaryText': 'hsl(var(--secondary-text-color))', // For text-secondaryText utility, as in PRD
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        DEFAULT: 'var(--radius)', // For 'rounded' class, PRD default is 'rounded-md' (0.375rem)
+				lg: 'var(--radius)', // So rounded-lg will be 0.375rem
+				md: 'calc(var(--radius) - 2px)', // approx 0.25rem / 4px
+				sm: 'calc(var(--radius) - 4px)', // approx 0.125rem / 2px
+        full: '9999px' // PRD effect
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
